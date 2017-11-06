@@ -196,7 +196,7 @@ describe('model/Entity', () => {
     })
   })
 
-  it('Should retrieve an specific embeded entity', async function () {
+  it('Should retrieve an specific embedded entity', async function () {
     let parent = new Entity({})
     let testData = [
       {name: 'foo', id: null, entity: null},
@@ -214,9 +214,9 @@ describe('model/Entity', () => {
       childTestData.id = child.get('_id')
     }
 
-    expect(parent.getEmbeded('childrens', testData[1].id)).to.eql(testData[1].entity)
-    expect(parent.getEmbeded('childrens', testData[3].id)).to.eql(testData[3].entity)
-    expect(parent.getEmbeded).withArgs('childrens', 'nonExistantId').to.throwException()
+    expect(parent.getEmbedded('childrens', testData[1].id)).to.eql(testData[1].entity)
+    expect(parent.getEmbedded('childrens', testData[3].id)).to.eql(testData[3].entity)
+    expect(parent.getEmbedded).withArgs('childrens', 'nonExistantId').to.throwException()
   })
 
   it('Should clear all fields of entity', async function () {
