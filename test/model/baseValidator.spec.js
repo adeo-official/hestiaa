@@ -20,10 +20,10 @@ describe('model/BaseValidator', () => {
 
   it('Should inject "_id: toObjectId" if no _id sanitizer was specified', async () => {
     let indicativeSanitizeStub = sinon.stub(indicative, 'sanitize')
-    let sanitizationsStub = sinon.stub(BaseValidator, 'sanitizations')
+    let sanitizationsStub = sinon.stub(BaseValidator.prototype, 'sanitizations')
 
     sanitizationsStub.returns({foo: 'scape'})
-    BaseValidator.sanitize({foo: 'bar'})
+    await new BaseValidator().sanitize({foo: 'bar'})
 
     expect(indicativeSanitizeStub.withArgs(
       {foo: 'bar'},
@@ -33,10 +33,10 @@ describe('model/BaseValidator', () => {
 
   it('Should not alter _id sanitizer if it was specified', async () => {
     let indicativeSanitizeStub = sinon.stub(indicative, 'sanitize')
-    let sanitizationsStub = sinon.stub(BaseValidator, 'sanitizations')
+    let sanitizationsStub = sinon.stub(BaseValidator.prototype, 'sanitizations')
 
     sanitizationsStub.returns({_id: 'to_int', foo: 'scape'})
-    BaseValidator.sanitize({foo: 'bar'})
+    await new BaseValidator().sanitize({foo: 'bar'})
 
     expect(indicativeSanitizeStub.withArgs(
       {foo: 'bar'},

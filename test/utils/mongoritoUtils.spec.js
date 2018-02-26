@@ -6,18 +6,18 @@ const BaseValidator = require('../../lib/model/baseValidator')
 const Entity = require('../../lib/model/entity')
 
 class SampleValidator extends BaseValidator {
-  static sanitizations () {
+  sanitizations () {
     return {}
   }
 
-  static validations () {
+  validations () {
     return {}
   }
 }
 
 class Box extends Entity {
   __getValidator () {
-    return SampleValidator
+    return new SampleValidator()
   }
 }
 
