@@ -52,6 +52,7 @@ describe('utils/Cryptographer', () => {
     let hashed = await Cryptographer.hash(input)
     let decrypted
     try {
+      // This should not work. That's is the point of the hash
       decrypted = await Cryptographer.decrypt(hashed)
     } catch (err) {
       decrypted = err
