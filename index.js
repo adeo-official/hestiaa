@@ -9,6 +9,7 @@ module.exports = {
   http: {
     catchError: require('./lib/http/catchError'),
     HttpResponseBuilder: require('./lib/http/httpResponseBuilder'),
+    PaginatedResult: require('./lib/http/paginatedResult'),
     paginator: require('./lib/http/paginator')
   },
   middleware: {
